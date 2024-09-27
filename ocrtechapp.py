@@ -2,11 +2,11 @@ import streamlit as st
 import fitz  # PyMuPDF
 import pytesseract
 from PIL import Image
-import numpy as np
 import io
 
 # Set the path for Tesseract executable if needed
-pytesseract.pytesseract.tesseract_cmd = r'tesseract'  # Adjust this if necessary
+# Uncomment the line below if you have a custom installation of Tesseract
+# pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'  # Adjust if necessary
 
 def extract_images_and_ocr(pdf_file):
     """
