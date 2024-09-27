@@ -5,8 +5,8 @@ from PIL import Image
 import io
 
 # Set the path for Tesseract executable if needed
-# Uncomment the line below if you have a custom installation of Tesseract
-# pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'  # Adjust if necessary
+# Uncomment and set the path if necessary
+# pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'  # Adjust this if necessary
 
 def extract_images_and_ocr(pdf_file):
     """
@@ -15,7 +15,8 @@ def extract_images_and_ocr(pdf_file):
     :param pdf_file: The uploaded PDF file.
     :return: A dictionary with page numbers and extracted text.
     """
-    pdf_document = fitz.open(pdf_file)
+    # Use the PDF file directly as a BytesIO object
+    pdf_document = fitz.open(stream=pdf_file.read(), filetype="pdf")
     page_ocr_data = {}
 
     for page_number in range(len(pdf_document)):
